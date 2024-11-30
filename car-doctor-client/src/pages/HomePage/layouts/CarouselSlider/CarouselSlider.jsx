@@ -44,7 +44,7 @@ const CarouselSlider = () => {
             <div className="relative w-full">
 
                 {/* Carousel wrapper */}
-                <div className="relative h-56 overflow-hidden rounded-lg md:h-[550px]">
+                <div className="relative h-56 overflow-hidden rounded-lg h-[380px] md:h-[550px]">
                     {images.map((image, index) => (
                         <div
                             key={index}
@@ -56,12 +56,22 @@ const CarouselSlider = () => {
                                 className="absolute block w-full h-full object-cover"
                                 alt={`Slide ${index + 1}`}
                             />
+                            <div className="absolute font-inter w-full h-full bg-gradient-to-r from-[#151515] to-[#15151500] space-y-5 md:space-y-8 p-8 md:px-14 md:py-24 lg:px-20 lg:py-28 ">
+                                <h2 className="font-bold text-[30px] pr-14 md:pr-0 md:text-5xl text-white md:w-[55%] lg:w-2/6">Affordable Price For Car Servicing</h2>
+                                <p className="text-white text-sm md:text-base md:w-[90%] lg:w-[49%] capitalize">There are many variations of passages of available, but the majority have suffered alteration in some form</p>
+                                <div className="flex gap-4 text-white">
+                                    <button className="px-3 md:px-4 py-3 bg-[#FF3811] transition-colors duration-300 hover:bg-[#b3260b] font-semibold text-sm rounded">
+                                        Discover More
+                                    </button>
+                                    <button className="px-3 md:px-4 py-3 bg-[#FFFFFF00] border font-semibold text-sm rounded">Latest Project</button>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>
 
                 {/* Slider controls */}
-                <div className="absolute flex bottom-10 right-8">
+                <div className="absolute flex bottom-4 right-5 md:bottom-10 md:right-8">
                     <button
                         type="button"
                         onClick={() => handlePrev(currentIndex)}
