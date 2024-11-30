@@ -1,4 +1,4 @@
-import logo from '../../../assets/logo.svg'
+import Logo from "../../../../../assets/logo.svg";
 
 const Footer = () => {
     return (
@@ -7,7 +7,7 @@ const Footer = () => {
                 <div className="flex flex-col md:flex-row justify-between gap-8">
                     <div className="lg:w-[80%]">
                         <div className="text-teal-600">
-                            <img src={logo} className="h-16" alt="" />
+                            <img src={Logo} className="h-16" alt="" />
                         </div>
 
                         <p className="mt-4 max-w-xs font-normal text-base text-[#E8E8E8]">
