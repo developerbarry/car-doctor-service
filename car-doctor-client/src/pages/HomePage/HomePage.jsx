@@ -1,6 +1,7 @@
 import AboutUs from "./layouts/AboutUS/AboutUs";
 import CarouselSlider from "./layouts/CarouselSlider/CarouselSlider";
 import Contact from "./layouts/Contact/Contact";
+import OurTeam from "./layouts/OurTeam/OurTeam";
 import ProductArea from "./layouts/ProductArea/ProductArea";
 import ServiceArea from "./layouts/ServiceArea/ServiceArea";
 
@@ -21,6 +22,9 @@ const HomePage = () => {
             </section>
             <section className="pb-20">
                 <ProductArea />
+            </section>
+            <section className="pb-20">
+                <OurTeam />
             </section>
         </>
     );
