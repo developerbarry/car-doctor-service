@@ -20,7 +20,6 @@ const SignUpPage = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(name, email, password)
         createUser(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
@@ -32,17 +31,14 @@ const SignUpPage = () => {
                         toast.success('Account Successfully Created!')
                     })
                     .catch((error) => {
-                        if(error){
+                        if (error) {
                             toast.error('Somthing wrong!')
                         }
                     })
             })
             .catch((error) => {
-                const message = error.message;
-                console.log(error)
-                console.log(message)
-                if(error){
-                    toast.error('Somthing Wrong!')
+                if (error) {
+                    toast.error('Email already used!')
                 }
             })
 

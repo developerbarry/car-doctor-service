@@ -2,8 +2,35 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const LogInPage = () => {
+
+    const { userSignIn } = useContext(AuthContext);
+
+    const handleSignIn = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        userSignIn(email, password)
+            .then(userCredential => {
+                const user = userCredential.user;
+                if (user) {
+                    toast.success("Successfully Login!")
+                }
+            })
+            .catch(error => {
+                if (error) {
+                    toast.error("Somthing Wrong, Please try again!")
+                }
+            })
+    }
 
     return (
         <section>
@@ -17,7 +44,9 @@ const LogInPage = () => {
                             <h1 className="text-xl py-8 text-center font-bold leading-tight tracking-tight text-[#444444] md:text-2xl">
                                 Sign in to your account
                             </h1>
-                            <form className="space-y-4 md:space-y-6">
+                            <form
+                                onSubmit={handleSignIn}
+                                className="space-y-4 md:space-y-6">
                                 <div>
                                     <label htmlFor="email" className="block mb-2 text-sm md:text-base font-medium text-[#444444]">Your email</label>
                                     <input type="email" name="email" id="email" className="border border-gray-300 text-[#444444] rounded-lg focus:border-[#A2A2A2] block w-full p-2.5" placeholder="name@company.com" required="" />
@@ -47,6 +76,8 @@ const LogInPage = () => {
                                 <p className="text-sm font-light text-center">
                                     <span className="text-[#737373]">Don’t have an account yet?</span> <Link to={'/deshboard/signup'} className="font-medium hover:underline text-[#FF3811]">Sign up</Link>
                                 </p>
+
+                                <ToastContainer />
                             </form>
                         </div>
                     </div>
