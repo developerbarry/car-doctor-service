@@ -1,6 +1,7 @@
 import AboutUs from "./layouts/AboutUS/AboutUs";
 import CarouselSlider from "./layouts/CarouselSlider/CarouselSlider";
 import Contact from "./layouts/Contact/Contact";
+import ProductArea from "./layouts/ProductArea/ProductArea";
 import ServiceArea from "./layouts/ServiceArea/ServiceArea";
 
 const HomePage = () => {
@@ -17,6 +18,9 @@ const HomePage = () => {
             </section>
             <section className="py-14">
                 <Contact />
+            </section>
+            <section className="pb-20">
+                <ProductArea />
             </section>
         </>
     );

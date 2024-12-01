@@ -3,7 +3,7 @@ import Logo from "../../../../../assets/logo.svg";
 const Footer = () => {
     return (
         <footer className="bg-[#151515]">
-            <div className="mx-auto max-w-screen-xl font-inter space-y-8 px-4 lg:px-20 py-16 lg:pt-24 lg:py-14 sm:px-6 lg:space-y-16 lg:px-8">
+            <div className="mx-auto max-w-screen-xl font-inter space-y-8 px-4 lg:px-28 py-16 lg:pt-20 lg:pb-16 sm:px-6 lg:space-y-16 lg:px-8">
                 <div className="flex flex-col md:flex-row justify-between gap-8">
                     <div className="lg:w-[80%]">
                         <div className="text-teal-600">
@@ -11,8 +11,7 @@ const Footer = () => {
                         </div>
 
                         <p className="mt-4 max-w-xs font-normal text-base text-[#E8E8E8]">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse non cupiditate quae nam
-                            molestias.
+                        Edwin Diaz is a software and web technologies engineer, a life coach trainer who is also a serial .
                         </p>
 
                         <ul className="mt-8 flex gap-6">
@@ -113,28 +112,21 @@ const Footer = () => {
 
                     <div className="flex flex-col md:flex-row justify-between w-full">
                         <div>
-                            <p className="font-semibold text-base md:text-xl text-[#FFFFFF]">Services</p>
+                            <p className="font-semibold text-base md:text-xl text-[#FFFFFF]">About</p>
 
                             <ul className="mt-6 space-y-4 font-normal text-sm">
                                 <li>
-                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75"> 1on1 Coaching </a>
+                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75">Home</a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75"> Company Review </a>
+                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75">Service</a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75"> Accounts Review </a>
+                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75">Contact</a>
                                 </li>
 
-                                <li>
-                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75"> HR Consulting </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75"> SEO Optimisation </a>
-                                </li>
                             </ul>
                         </div>
 
@@ -143,33 +135,29 @@ const Footer = () => {
 
                             <ul className="mt-6 space-y-4 font-normal text-sm">
                                 <li>
-                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75"> About </a>
+                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75">Why Car Doctor</a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75"> Meet the Team </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75"> Accounts Review </a>
+                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75">About</a>
                                 </li>
                             </ul>
                         </div>
 
                         <div className="mt-10 md:mt-0">
-                            <p className="font-semibold text-base md:text-xl text-[#FFFFFF]">Helpful Links</p>
+                            <p className="font-semibold text-base md:text-xl text-[#FFFFFF]">Support</p>
 
                             <ul className="mt-6 space-y-4 font-normal text-sm">
                                 <li>
-                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75"> Contact </a>
+                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75">Support Center</a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75"> FAQs </a>
+                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75">Feedback</a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75"> Live Chat </a>
+                                    <a href="#" className="text-[#F3F3F3] transition hover:opacity-75">Accesbility</a>
                                 </li>
                             </ul>
                         </div>
