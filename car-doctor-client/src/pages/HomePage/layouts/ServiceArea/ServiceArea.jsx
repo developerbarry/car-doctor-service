@@ -1,6 +1,15 @@
 import { useEffect, useState } from "react";
 
 const ServiceArea = () => {
+    const [services, setServices] = useState([])
+
+    useEffect(() => {
+        fetch('./services.json')
+            .then(res => res.json())
+            .then(data => setServices(data))
+    }, [])
+
+    console.log(services)
 
     return (
         <div className="container mx-auto px-4 md:px-12 lg:px-24 py-4">
