@@ -24,7 +24,7 @@ const ProductArea = () => {
         <div className="container mx-auto px-4 md:px-12 lg:px-24 py-4">
             <div className="font-inter">
                 <div className="text-center lg:px-48 mb-14">
-                    <span className="font-bold text-base text-[#FF3811] inline-block mb-3">Popular Products</span>
+                    <span className="font-bold text-base text-[#FF3811] inline-block mb-4">Popular Products</span>
                     <h3 className="text-3xl md:text-[40px] font-bold mb-5">Browse Our Products</h3>
                     <p className="font-normal text-[#737373] capitalize text-sm md:text-base">The majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable. </p>
                 </div>

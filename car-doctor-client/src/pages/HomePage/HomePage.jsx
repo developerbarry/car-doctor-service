@@ -1,5 +1,6 @@
 import AboutUs from "./layouts/AboutUS/AboutUs";
 import CarouselSlider from "./layouts/CarouselSlider/CarouselSlider";
+import ChooseUs from "./layouts/ChooseUs/ChooseUs";
 import Contact from "./layouts/Contact/Contact";
 import OurTeam from "./layouts/OurTeam/OurTeam";
 import ProductArea from "./layouts/ProductArea/ProductArea";
@@ -25,6 +26,9 @@ const HomePage = () => {
             </section>
             <section className="pb-20">
                 <OurTeam />
+            </section>
+            <section className="pb-20">
+                <ChooseUs />
             </section>
         </>
     );
