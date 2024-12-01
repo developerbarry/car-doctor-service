@@ -2,8 +2,51 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUpPage = () => {
+
+    const { createUser } = useContext(AuthContext)
+
+    const handleSignUp = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log(name, email, password)
+        createUser(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user)
+                updateProfile(user, {
+                    displayName: name
+                })
+                    .then(() => {
+                        toast.success('Account Successfully Created!')
+                    })
+                    .catch((error) => {
+                        if(error){
+                            toast.error('Somthing wrong!')
+                        }
+                    })
+            })
+            .catch((error) => {
+                const message = error.message;
+                console.log(error)
+                console.log(message)
+                if(error){
+                    toast.error('Somthing Wrong!')
+                }
+            })
+
+    }
     return (
         <section>
             <div className="container mx-auto px-4 md:px-12 lg:px-24 py-4">
@@ -16,7 +59,9 @@ const SignUpPage = () => {
                             <h1 className="text-xl py-8 text-center font-bold leading-tight tracking-tight text-[#444444] md:text-2xl">
                                 Sign in to your account
                             </h1>
-                            <form className="space-y-4 md:space-y-6">
+                            <form
+                                onSubmit={handleSignUp}
+                                className="space-y-4 md:space-y-6">
                                 <div>
                                     <label htmlFor="name" className="block mb-2 text-sm md:text-base font-medium text-[#444444]">Name</label>
                                     <input type="text" name="name" id="name" className="border border-gray-300 text-[#444444] rounded-lg focus:border-[#A2A2A2] block w-full p-2.5" placeholder="Enter your name" required="" />
@@ -49,6 +94,9 @@ const SignUpPage = () => {
                                 <p className="text-sm font-light text-center">
                                     <span className="text-[#737373]">Already have an account?</span> <Link to={'/deshboard/login'} className="font-medium hover:underline text-[#FF3811]">Sign in</Link>
                                 </p>
+
+                                <ToastContainer />
+
                             </form>
                         </div>
                     </div>
