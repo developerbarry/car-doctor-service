@@ -4,6 +4,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const LogInPage = () => {
+
     return (
         <section>
             <div className="container mx-auto px-4 md:px-12 lg:px-24 py-4">
