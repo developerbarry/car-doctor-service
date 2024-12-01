@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import Logo from "../../../../../assets/logo.svg";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 
-const Header = () => {
+const Header = ({ isTrue }) => {
+    console.log(isTrue)
 
     const [openToggle, setOpenTOggle] = useState(false)
 
@@ -17,7 +19,7 @@ const Header = () => {
 
                 </Link>
                 <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                    <button type="button" className="text-[#FF3811] border border-[#FF3811] focus:ring-1 focus:outline-none focus:ring-[#FF3811] font-medium rounded text-sm px-4 py-2.5 text-center font-inter">Appointment</button>
+                    <button type="button" className={`text-[#FF3811] ${isTrue ? "hidden":"block"} border border-[#FF3811] focus:ring-1 focus:outline-none focus:ring-[#FF3811] font-medium rounded text-sm px-4 py-2.5 text-center font-inter`}>Appointment</button>
                     <button
                         onClick={() => setOpenTOggle(!openToggle)}
                         type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-[#444444] hover:text-white rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#444444] hover:bg-[#444444] focus:ring-[#444444]">
@@ -51,5 +53,9 @@ const Header = () => {
 
     );
 };
+
+Header.propTypes = {
+    isTrue: PropTypes.bool
+}
 
 export default Header;
