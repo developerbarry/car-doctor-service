@@ -3,8 +3,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const LogInPage = () => {
-
+const SignUpPage = () => {
     return (
         <section>
             <div className="container mx-auto px-4 md:px-12 lg:px-24 py-4">
@@ -19,6 +18,10 @@ const LogInPage = () => {
                             </h1>
                             <form className="space-y-4 md:space-y-6">
                                 <div>
+                                    <label htmlFor="name" className="block mb-2 text-sm md:text-base font-medium text-[#444444]">Name</label>
+                                    <input type="text" name="name" id="name" className="border border-gray-300 text-[#444444] rounded-lg focus:border-[#A2A2A2] block w-full p-2.5" placeholder="Enter your name" required="" />
+                                </div>
+                                <div>
                                     <label htmlFor="email" className="block mb-2 text-sm md:text-base font-medium text-[#444444]">Your email</label>
                                     <input type="email" name="email" id="email" className="border border-gray-300 text-[#444444] rounded-lg focus:border-[#A2A2A2] block w-full p-2.5" placeholder="name@company.com" required="" />
                                 </div>
@@ -32,12 +35,11 @@ const LogInPage = () => {
                                             <input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded" required="" />
                                         </div>
                                         <div className="ml-3 text-sm">
-                                            <label htmlFor="remember" className="text-[#444444]">Remember me</label>
+                                            <label htmlFor="remember" className="text-[#444444]">Accepts Our <Link className="font-medium hover:underline text-[#FF3811] pointer-cursor">Terms & Condition</Link> </label>
                                         </div>
                                     </div>
-                                    <a href="#" className="text-sm font-medium hover:underline">Forgot password?</a>
                                 </div>
-                                <button type="submit" className="w-full text-white bg-[#FF3811] hover:bg-[#ab2106] focus:ring-4 focus:outline-none focus:ring-[#ab2106] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
+                                <button type="submit" className="w-full text-white bg-[#FF3811] hover:bg-[#ab2106] focus:ring-4 focus:outline-none focus:ring-[#ab2106] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign Up</button>
                                 <span className="text-[444444] font-medium text-center text-sm mt-3 inline-block w-full">Or Sign In with</span>
                                 <div className="flex gap-x-2 justify-center">
                                     <button className="p-4 rounded-full bg-[#F5F5F8]"><FaFacebookF color="#3B5998" size={16} /></button>
@@ -45,7 +47,7 @@ const LogInPage = () => {
                                     <button className="p-4 rounded-full bg-[#F5F5F8]"><FcGoogle size={16} /></button>
                                 </div>
                                 <p className="text-sm font-light text-center">
-                                    <span className="text-[#737373]">Don’t have an account yet?</span> <Link to={'/deshboard/signup'} className="font-medium hover:underline text-[#FF3811]">Sign up</Link>
+                                    <span className="text-[#737373]">Already have an account?</span> <Link to={'/deshboard/login'} className="font-medium hover:underline text-[#FF3811]">Sign in</Link>
                                 </p>
                             </form>
                         </div>
@@ -56,4 +58,4 @@ const LogInPage = () => {
     );
 };
 
-export default LogInPage;
+export default SignUpPage;

@@ -44,7 +44,7 @@ const Header = ({ isTrue }) => {
                                         <Link className="block py-2 px-3 text-[#444444] rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#FF3811] md:p-0">Manage Inventory</Link>
                                     </li>
                                     <li>
-                                        <Link to={'/login'} className="block py-2 px-3 text-[#444444] rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#FF3811] md:p-0">Login</Link>
+                                        <Link to={'/deshboard/login'} className="block py-2 px-3 text-[#444444] rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#FF3811] md:p-0">Login</Link>
                                     </li>
                                 </ul>
                             ) :
