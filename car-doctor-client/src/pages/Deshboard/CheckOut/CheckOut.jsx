@@ -1,8 +1,11 @@
 import { useParams } from "react-router-dom";
 import CheckOutHeader from "../Shared/CheckOutHeader";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const CheckOut = () => {
+    const { user } = useContext(AuthContext);
+
     const { id } = useParams();
 
     const [service, setService] = useState({});
@@ -15,6 +18,30 @@ const CheckOut = () => {
 
     console.log(service)
 
+    const handleConfirmOrder = (e) => {
+        e.preventDefault();
+        const form = new FormData(e.currentTarget);
+        const service_id = service?._id;
+        const serviceName = service?.title;
+        const name = user?.displayName;
+        const email = form.get('email');
+        const phoneNumber = form.get('phone');
+        const price = form.get('price');
+        const message = form.get('message');
+
+        const newOrder = {
+            service_id,
+            serviceName,
+            name,
+            email,
+            phoneNumber,
+            price,
+            message
+        }
+
+        console.log(newOrder)
+    }
+
 
     return (
         <section>
@@ -23,16 +50,22 @@ const CheckOut = () => {
                     <CheckOutHeader service={service} />
                     <div className="min-h-screen font-inter flex items-center justify-center my-10 md:my-14">
                         <div className="w-full bg-[#F3F3F3] p-4 md:p-12 lg:p-24 rounded-lg shadow-md">
-                            <form className="space-y-6">
+                            <form
+                                onSubmit={handleConfirmOrder}
+                                className="space-y-6">
                                 <div className="flex gap-4">
                                     <input
                                         type="text"
-                                        placeholder="First Name"
+                                        placeholder="Your Name"
+                                        name="name"
+                                        defaultValue={user?.displayName}
                                         className="w-full px-4 text-sm py-2.5 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                     <input
                                         type="text"
-                                        placeholder="Last Name"
+                                        placeholder="Your Email"
+                                        name="email"
+                                        defaultValue={user?.email}
                                         className="w-full px-4 py-2.5 text-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                 </div>
@@ -40,16 +73,20 @@ const CheckOut = () => {
                                     <input
                                         type="text"
                                         placeholder="Your Phone"
+                                        name="phone"
                                         className="w-full px-4 py-2.5 text-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                     <input
-                                        type="email"
-                                        placeholder="Your Email"
+                                        type="text"
+                                        placeholder="Service Price $"
+                                        name="price"
+                                        defaultValue={service?.price}
                                         className="w-full px-4 py-2.5 text-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                 </div>
                                 <textarea
                                     placeholder="Your Message"
+                                    name="message"
                                     className="w-full px-4 py-2.5 text-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                                     rows="10"
                                 ></textarea>
