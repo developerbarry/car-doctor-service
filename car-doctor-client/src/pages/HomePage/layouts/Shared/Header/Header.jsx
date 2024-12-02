@@ -14,7 +14,7 @@ const Header = ({ isTrue }) => {
 
         <header className="bg-white w-full z-20 top-0 start-0 border-b">
             <div className="container mx-auto px-4 md:px-12 lg:px-24 py-4">
-                <div className={`flex flex-wrap items-center ${isTrue ? "" : ""} justify-between`}>
+                <div className={`flex flex-wrap items-center justify-between`}>
                     <Link to={'/'} className="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src={Logo} className="h-16" alt="Logo" />
 
