@@ -48,8 +48,14 @@ async function run() {
 
 
         //Bookings
+
         app.get('/bookings', async (req, res) => {
-            const cursor = bookings.find();
+            let query = {};
+            if (req.query?.email) {
+                query = { email: req.query.email }
+            }
+
+            const cursor = bookings.find(query);
             const result = await cursor.toArray();
             res.send(result)
         })

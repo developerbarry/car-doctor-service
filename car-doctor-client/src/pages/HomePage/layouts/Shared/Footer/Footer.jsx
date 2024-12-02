@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Logo from "../../../../../assets/logo.svg";
 
 const Footer = () => {
@@ -125,6 +126,9 @@ const Footer = () => {
 
                                 <li>
                                     <a href="#" className="text-[#F3F3F3] transition hover:opacity-75">Contact</a>
+                                </li>
+                                <li>
+                                    <Link to={'/deshboard/login'} className="text-[#F3F3F3] transition hover:opacity-75">Sign In</Link>
                                 </li>
 
                             </ul>
