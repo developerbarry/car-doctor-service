@@ -1,6 +1,10 @@
+import { useParams } from "react-router-dom";
 import CheckOutHeader from "../Shared/CheckOutHeader";
 
 const CheckOut = () => {
+    const {id} = useParams();
+    console.log(id)
+    
     return (
         <section>
             <div className="container mx-auto px-4 md:px-12 lg:px-24 py-4">
