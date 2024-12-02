@@ -29,7 +29,26 @@ const OrderPage = () => {
             })
     }
 
-   
+    const handleOrderConfirm = (id) => {
+        fetch(`http://localhost:5000/bookings/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ status: "Approved" })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Successfully Approved')
+                    const remaining = orders.filter(order => order._id !== id);
+                    const updated = orders.find(order => order._id === id);
+                    updated.status = "Approved";
+                    const confirmBooking = [updated, ...remaining];
+                    setOrders(confirmBooking)
+                }
+            })
+    }
 
 
 
