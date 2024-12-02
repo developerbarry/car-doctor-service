@@ -2,6 +2,9 @@ import { useParams } from "react-router-dom";
 import CheckOutHeader from "../Shared/CheckOutHeader";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const CheckOut = () => {
     const { user } = useContext(AuthContext);
@@ -25,21 +28,34 @@ const CheckOut = () => {
         const serviceName = service?.title;
         const name = user?.displayName;
         const email = form.get('email');
-        const phoneNumber = form.get('phone');
+        const date = form.get('date');
         const price = form.get('price');
         const message = form.get('message');
 
         const newOrder = {
+            img: service?.img,
             service_id,
             serviceName,
             name,
             email,
-            phoneNumber,
+            date,
             price,
             message
         }
 
-        console.log(newOrder)
+        fetch('http://localhost:5000/bookings', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newOrder)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    toast.success('Order Confirm Successfully!')
+                }
+            })
     }
 
 
@@ -71,9 +87,8 @@ const CheckOut = () => {
                                 </div>
                                 <div className="flex gap-4">
                                     <input
-                                        type="text"
-                                        placeholder="Your Phone"
-                                        name="phone"
+                                        type="date"
+                                        name="date"
                                         className="w-full px-4 py-2.5 text-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                     <input
@@ -97,6 +112,8 @@ const CheckOut = () => {
                                     Order Confirm
                                 </button>
                             </form>
+
+                            <ToastContainer />
                         </div>
                     </div>
 
