@@ -16,7 +16,6 @@ const OrderPage = () => {
 
     return (
         <section>
-            <h1>Total Order: {orders.length}</h1>
             <div className="container mx-auto px-4 md:px-12 lg:px-24 py-4">
                 <div className="overflow-x-auto font-inter">
                     <table className="min-w-full bg-white">

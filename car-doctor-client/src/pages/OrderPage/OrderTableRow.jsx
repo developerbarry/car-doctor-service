@@ -9,7 +9,7 @@ const OrderTableRow = ({ order }) => {
                     <img src={img} className="w-24 h-24 rounded-md " />
                     <div className="ml-4">
                         <p className="text-sm text-black">{serviceName}</p>
-                        <p className="text-xs text-gray-500">{message && message.length > 20 ? message.slice(0, 20) + "..." : message}</p>
+                        <p className="text-xs text-gray-500">{message && message.length > 40 ? message.slice(0, 40) + "..." : message}</p>
                     </div>
                 </div>
             </td>
