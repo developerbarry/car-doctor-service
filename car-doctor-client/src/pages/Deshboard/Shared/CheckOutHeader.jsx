@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 
-const CheckOutHeader = () => {
+const CheckOutHeader = ({ service }) => {
     return (
         <div className="relative bg-gray-900 font-inter text-white h-52 rounded-lg overflow-hidden">
             <img
@@ -9,7 +10,7 @@ const CheckOutHeader = () => {
             />
 
             <div className="relative z-10 p-8 md:p-14 flex flex-col items-start h-full justify-center">
-                <h1 className="text-3xl font-bold">Check Out</h1>
+                <h1 className="text-3xl font-bold">{service?.title}</h1>
             </div>
 
             <div className="absolute bottom-0 left-0 right-0">
@@ -20,5 +21,9 @@ const CheckOutHeader = () => {
         </div>
     );
 };
+
+CheckOutHeader.propTypes = {
+    service: PropTypes.object
+}
 
 export default CheckOutHeader;

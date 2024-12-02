@@ -1,15 +1,26 @@
 import { useParams } from "react-router-dom";
 import CheckOutHeader from "../Shared/CheckOutHeader";
+import { useEffect, useState } from "react";
 
 const CheckOut = () => {
-    const {id} = useParams();
-    console.log(id)
-    
+    const { id } = useParams();
+
+    const [service, setService] = useState({});
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/services/${id}`)
+            .then(res => res.json())
+            .then(data => setService(data))
+    }, [id])
+
+    console.log(service)
+
+
     return (
         <section>
             <div className="container mx-auto px-4 md:px-12 lg:px-24 py-4">
                 <div>
-                    <CheckOutHeader />
+                    <CheckOutHeader service={service} />
                     <div className="min-h-screen font-inter flex items-center justify-center my-10 md:my-14">
                         <div className="w-full bg-[#F3F3F3] p-4 md:p-12 lg:p-24 rounded-lg shadow-md">
                             <form className="space-y-6">
