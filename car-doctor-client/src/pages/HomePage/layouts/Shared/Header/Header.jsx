@@ -1,16 +1,29 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../../../../assets/logo.svg";
-import { useState } from "react";
 import PropTypes from "prop-types";
-
+import { AuthContext } from "../../../../../AuthProvider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = ({ isTrue }) => {
-    console.log(isTrue)
-
+    const { user, userLogOut } = useContext(AuthContext)
     const [openToggle, setOpenTOggle] = useState(false)
 
-    return (
+    const LogOut = () => {
+        userLogOut()
+            .then(() => {
+                toast.success('Successfully LogOut')
+            })
+            .catch(error => {
+                if (error) {
+                    toast.error('Somthing Wrong, Please try Again!')
+                }
+            })
+    }
+    
 
+    return (
 
         <header className="bg-white w-full z-20 top-0 start-0 border-b">
             <div className="container mx-auto px-4 md:px-12 lg:px-24 py-4">
@@ -19,8 +32,12 @@ const Header = ({ isTrue }) => {
                         <img src={Logo} className="h-16" alt="Logo" />
 
                     </Link>
-                    <div className={`flex md:order-2 ${isTrue ? "md:hidden" : "block"} space-x-3 md:space-x-0 rtl:space-x-reverse`}>
+                    <div className={`flex md:order-2 ${user ? "block gap-3" : isTrue ? "md:hidden" : "block"} space-x-3 md:space-x-0 rtl:space-x-reverse`}>
                         <button type="button" className={`text-[#FF3811] border border-[#FF3811] focus:ring-1 focus:outline-none ${isTrue ? "hidden" : "block"} focus:ring-[#FF3811] font-medium rounded text-sm px-4 py-2.5 text-center font-inter`}>Appointment</button>
+                        <button onClick={LogOut} type="button" className={`text-[#FF3811] border border-[#FF3811] focus:ring-1 focus:outline-none ${user ? "block" : "hidden"} focus:ring-[#FF3811] font-medium rounded text-sm px-4 py-2.5 text-center font-inter`}>Sign Out</button>
+
+                        <ToastContainer />
+
                         <button
                             onClick={() => setOpenTOggle(!openToggle)}
                             type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-[#444444] hover:text-white rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#444444] hover:bg-[#444444] focus:ring-[#444444]">
