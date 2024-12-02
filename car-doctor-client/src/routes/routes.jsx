@@ -5,6 +5,7 @@ import LogInPage from "../pages/LogInPage/LogInPage";
 import LogInRoot from "../components/Root/LogInRoot/LogInRoot";
 import SignUpPage from "../pages/SignUpPage/SignUpPage";
 import CheckOut from "../pages/Deshboard/CheckOut/CheckOut";
+import OrderPage from "../pages/OrderPage/OrderPage";
 
 const routes = (
     <>
@@ -13,6 +14,7 @@ const routes = (
             <Route path="checkout/:id" element={<CheckOut />} />
         </Route>
         <Route path="/deshboard" element={<LogInRoot isTrue={true} />}>
+            <Route index element={<OrderPage />} />
             <Route path="login" element={<LogInPage />} />
             <Route path="signup" element={<SignUpPage />} />
         </Route>
