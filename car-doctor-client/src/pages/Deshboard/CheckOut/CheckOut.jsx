@@ -14,7 +14,7 @@ const CheckOut = () => {
     const [service, setService] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/services/${id}`)
+        fetch(`https://car-doctor-server-iota-silk.vercel.app/services/${id}`)
             .then(res => res.json())
             .then(data => setService(data))
     }, [id])
@@ -43,7 +43,7 @@ const CheckOut = () => {
             message
         }
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://car-doctor-server-iota-silk.vercel.app/bookings', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -18,7 +18,6 @@ const ProductArea = () => {
             })
     }, [])
 
-    console.log(products)
 
     return (
         <div className="container mx-auto px-4 md:px-12 lg:px-24 py-4">
