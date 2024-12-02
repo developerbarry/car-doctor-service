@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import OrderTableRow from "./OrderTableRow";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const OrderPage = () => {
     const { user } = useContext(AuthContext);
@@ -12,7 +14,25 @@ const OrderPage = () => {
             .then(data => setOrders(data))
     }, [user?.email])
 
-    console.log(orders)
+    const handleDeleteOrder = (id) => {
+        fetch(`http://localhost:5000/bookings/${id}`, {
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0) {
+                    toast.success("Successfully Deleted")
+                    const remaining = orders.filter(order => order._id !== id);
+                    setOrders(remaining)
+                }
+            })
+    }
+
+   
+
+
+
 
     return (
         <section>
@@ -41,11 +61,18 @@ const OrderPage = () => {
 
                         <tbody className="whitespace-nowrap">
                             {
-                                orders?.map(order => <OrderTableRow key={order._id} order={order} />)
+                                orders?.map(order => <OrderTableRow
+                                    key={order._id}
+                                    handleDeleteOrder={handleDeleteOrder}
+                                    order={order}
+                                    handleOrderConfirm={handleOrderConfirm}
+                                />)
                             }
 
                         </tbody>
                     </table>
+
+                    <ToastContainer />
 
                     <div className="md:flex m-4">
                         <p className="text-sm text-gray-500 flex-1">Showind 1 to 5 of 100 entries</p>
