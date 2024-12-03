@@ -1,16 +1,17 @@
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
-
 import 'react-toastify/dist/ReactToastify.css';
 
 const LogInPage = () => {
 
     const { userSignIn } = useContext(AuthContext);
+    const location = useLocation();
+    const nagivate = useNavigate()
 
     const handleSignIn = (e) => {
         e.preventDefault()
@@ -22,8 +23,9 @@ const LogInPage = () => {
             .then(userCredential => {
                 const user = userCredential.user;
                 if (user) {
-                    toast.success("Successfully Login!")
+                    nagivate(location?.state ? location?.state : '/')
                 }
+
             })
             .catch(error => {
                 if (error) {
@@ -76,11 +78,13 @@ const LogInPage = () => {
                                 <p className="text-sm font-light text-center">
                                     <span className="text-[#737373]">Don’t have an account yet?</span> <Link to={'/deshboard/signup'} className="font-medium hover:underline text-[#FF3811]">Sign up</Link>
                                 </p>
-
-                                <ToastContainer />
                             </form>
+
                         </div>
                     </div>
+
+                    <ToastContainer />
+
                 </div>
             </div>
         </section>

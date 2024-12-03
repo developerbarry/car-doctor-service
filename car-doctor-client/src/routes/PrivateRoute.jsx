@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const PrivateRoute = ({ children }) => {
     const { user, isLoading } = useContext(AuthContext);
+    const location = useLocation();
+
     if (isLoading) {
         return (
             <svg xmlns="http://www.w3.org/2000/svg" className="w-10 animate-[spin_0.8s_linear_infinite] fill-blue-600 block mx-auto"
@@ -20,7 +22,7 @@ const PrivateRoute = ({ children }) => {
         return children
     }
 
-    return <Navigate to={'/deshboard/login'} replace></Navigate>
+    return <Navigate state={location.pathname} to={'/deshboard/login'} replace></Navigate>
 };
 
 PrivateRoute.propTypes = {
